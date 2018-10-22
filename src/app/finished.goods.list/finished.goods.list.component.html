@@ -1,0 +1,42 @@
+<layout-header></layout-header>
+
+<div class="row">
+
+
+    <div class="col-sm-3 col-md-2 sidebar">
+        <layout-menu></layout-menu>        
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Finished Goods List</h1>
+
+        <h2 class="sub-header"> <button class="btn pull-right"(click)="add_item()">Add Item</button></h2>
+        <div class="table-responsive">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Item Code</th>
+                        <th>Description</th>
+                        <th>Specific Gravity</th>
+                        <th>Item Type</th>
+                        <th>UOM</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of items">
+                        <td>{{item.code}} </td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.sg}}</td>
+                        <td>{{item.item_type}}</td>
+                        <td>{{item.uom}}</td>
+                        <td><button (click)="fetch_selected_item(item)">edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+</div>

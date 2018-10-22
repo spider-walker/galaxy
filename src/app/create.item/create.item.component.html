@@ -1,0 +1,73 @@
+<layout-header></layout-header>
+
+<div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <layout-menu></layout-menu>        
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Add Item <button class="btn btn-success pull-right"(click)="item_list()">Item List</button></h1>
+
+        <div class="table-responsive">
+            <alert></alert>
+            <form [formGroup]="createItem" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="code">Stock Item</label>
+                    <select name="" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_type.errors }">
+                            <option value="">Select</option>
+                        <option *ngFor="let it of stockItems" value="{{it.stockid}}">{{it.stock_code}} {{it.description}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                        <div *ngIf="f.item_type.errors.required">Stock Item</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="code">Specific Gravity</label>
+                    <input type="text" formControlName="sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                           <div *ngIf="submitted && f.sg.errors" class="invalid-feedback">
+                           <div *ngIf="f.sg.errors.required">Specific Gravity</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="code">Item Group</label>
+                    <select name="" formControlName="item_group" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_group.errors }">
+                            <option value="">Select</option>
+                        <option value="Raw Material">Raw Material</option>
+                        <option value="Finished Goods">Finished Goods</option>
+                        <option value="Packing Material">Packing Material</option>
+                        <option value="Containers">Containers</option>
+                    </select>
+                    <div *ngIf="submitted && f.item_group.errors" class="invalid-feedback">
+                        <div *ngIf="f.item_group.errors.required">Specific Gravity</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="item_type">Item Type</label>
+                    <select name="" formControlName="item_type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_type.errors }">
+                            <option value="">Select</option>
+                        <option *ngFor="let it of item_types" value="{{it}}">{{it}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.item_group.errors" class="invalid-feedback">
+                        <div *ngIf="f.item_type.errors.required">Item Type</div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="uom">UOM</label>
+                    <select name="" formControlName="uom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.uom.errors }">
+                            <option value="">Select</option>
+                        <option value="Litres">Litres</option>
+                        <option value="KG">Kilogram</option>
+                    </select>
+                    <div *ngIf="submitted && f.item_group.errors" class="invalid-feedback">
+                        <div *ngIf="f.uom.errors.required">UOM</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>

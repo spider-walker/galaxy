@@ -1,0 +1,41 @@
+<layout-header></layout-header>
+
+<div class="row">
+
+
+    <div class="col-sm-3 col-md-2 sidebar">
+        <layout-menu></layout-menu>        
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Dashboard</h1>
+
+        <h2 class="sub-header">Finished Goods <button class="btn pull-right"(click)="add_formulation()">Create Formulation</button></h2>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Production Code</th>
+                        <th>Description</th>
+                        <th>Color</th>
+                        <th>Status</th>
+                        <th>Start Date</th>
+                        <th>Raw Materials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr *ngFor="let formulation of formulations">
+                        <td>{{formulation.production_code}} </td>
+                        <td>{{formulation.description}}</td>
+                        <td>{{formulation.color}}</td>
+                        <td>{{formulation.status}}</td>
+                        <td>{{formulation.start_date}}</td>
+                        <td><button (click)="fetch_selected_formulation(formulation)"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+</div>

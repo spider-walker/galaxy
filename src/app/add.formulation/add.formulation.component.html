@@ -1,0 +1,184 @@
+<layout-header></layout-header>
+
+<div class="row">
+
+
+    <div class="col-sm-3 col-md-2 sidebar">
+        <layout-menu></layout-menu>        
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Add Formulation</h1>
+
+        <div class="table-responsive">
+            <alert></alert>
+            <form [formGroup]="createItem" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="code">Production Item</label>
+                    <select name="" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_type.errors }">
+                            <option value="">Select</option>
+                        <option *ngFor="let it of finishedGoodsItems" value="{{it.code}}">{{it.code}} {{it.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                        <div *ngIf="f.item_type.errors.required">Production  Item is required</div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="color">Color</label>
+                    <select   formControlName="color" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.color.errors }">
+                            <option value="">Select</option>
+                        <option *ngFor="let c of finishedGoodsItemsColors" value="{{c}}">{{c}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.color.errors" class="invalid-feedback">
+                        <div *ngIf="f.color.errors.required">Color is required</div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select name="" formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
+                            <option value="1">Active</option>
+                        <option value="0">In-Active</option>
+                    </select>
+                    <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                        <div *ngIf="f.status.errors.required">Status is required</div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="page-header">Raw Materials</h4>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No#</th>
+                            <th>Production Item</th>
+                            <th>Mass</th>
+                            <th>Volume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_type.errors }">
+                                            <option value="">Select</option>
+                                        <option *ngFor="let it of rawMaterialstems" value="{{it.code}}">{{it.code}} {{it.name}}</option>
+                                    </select>
+
+                                </div> 
+                            </td>
+                            <td>
+                                <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                            </td>
+                            <td>
+                                <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                2
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_type.errors }">
+                                            <option value="">Select</option>
+                                        <option *ngFor="let it of rawMaterialstems" value="{{it.code}}">{{it.code}} {{it.name}}</option>
+                                    </select>
+
+                                </div> 
+                            </td>
+                            <td>
+                                <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                            </td>
+                            <td>
+                                <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               3
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select name="" formControlName="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item_type.errors }">
+                                            <option value="">Select</option>
+                                        <option *ngFor="let it of rawMaterialstems" value="{{it.code}}">{{it.code}} {{it.name}}</option>
+                                    </select>
+
+                                </div> 
+                            </td>
+                            <td>
+                                <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                            </td>
+                            <td>
+                                <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="theoritical_sg">Theoritical SG</label>
+                            <input type="text" formControlName="theoritical_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.theoritical_sg.errors }" />
+                                   <div *ngIf="submitted && f.theoritical_sg.errors" class="invalid-feedback">
+                                   <div *ngIf="f.theoritical_sg.errors.required">Theoritical SG</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="measured_sg">Measure SG</label>
+                            <input type="text" formControlName="measured_sg" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.measured_sg.errors }" />
+                                   <div *ngIf="submitted && f.measured_sg.errors" class="invalid-feedback">
+                                   <div *ngIf="f.measured_sg.errors.required">Measured SG</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="production_loss">Production Loss</label>
+                            <input type="text" formControlName="production_loss" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.production_loss.errors }" />
+                                   <div *ngIf="submitted && f.production_loss.errors" class="invalid-feedback">
+                                   <div *ngIf="f.production_loss.errors.required">Production Loss</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="production_mass">Production Mass</label>
+                            <input type="text" formControlName="production_mass" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.production_mass.errors }" />
+                                   <div *ngIf="submitted && f.production_mass.errors" class="invalid-feedback">
+                                   <div *ngIf="f.production_mass.errors.required">Production Mass</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="production_volume">Production Volume</label>
+                            <input type="text" formControlName="production_volume" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.production_volume.errors }" />
+                                   <div *ngIf="submitted && f.production_volume.errors" class="invalid-feedback">
+                                   <div *ngIf="f.production_volume.errors.required">Production Volume</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary">Save</button>
+                    <a class="btn btn-primary" (click)="cancel()">Cancel</a>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+</div>
