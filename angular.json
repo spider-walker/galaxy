@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "galaxy"
+  "defaultProject": "galaxy",
+  "cli": {
+    "analytics": false
+  }
 }
